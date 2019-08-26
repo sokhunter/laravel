@@ -1,0 +1,77 @@
+----------------
+Ayuda de artisan
+----------------
+    php artisan
+    php artisan comando --help
+
+---------------------
+Ejecutar el servidor
+---------------------
+php artisan serve => Abre el puerto 8000
+
+-----
+Rutas
+-----
+1. Listar todas las rutas definidas
+php artisan route:list
+
+2. Agregar una ruta
+Route::get('/', 'HomeController@index'); (controlador@funcion)
+
+3. Agregar ruta de CRUD
+Route::resource('/ruta', 'controlador');
+
+
+-------------
+Controladores
+-------------
+1. Crear:
+php artisan make:controller NombreControlador
+
+2. Crear para CRUD
+php artisan make:controller NombreControlador --resource
+
+-----------
+Migraciones
+-----------
+1. Ejecutar todas las migraciones
+php artisan migrate
+    
+    //*---------------------------------------------------*//
+    https://laravel-news.com/laravel-5-4-key-too-long-error
+    *Para error en la migracion (Specified key was too long)
+    Agregare en app/providers/appServicePorvider:
+
+        use Illuminate\Support\Facades\Schema;
+        public function boot()
+        {
+            Schema::defaultStringLength(191);
+            //
+        }
+    //*---------------------------------------------------*//
+
+2. Crear
+php artisan make:migration descripcion --create:nombre_migracion
+
+3. Revertir ultima migracion 
+php artisan migration:rollback
+
+4. Eliminar y volver a crear todas las migraciones
+php artisan migration:fresh
+
+5. Modificar tabla existente
+php artisan make:migration descripcion --tabla:nombre_migracion
+
+-------
+Modelos
+-------
+* Se crean en: app/
+1. Crear modelo
+php artisan make:model NombreModelo
+    
+    //*-------------------------*//
+    Entorno de prueba de eloquen
+    php artisan tinker
+    //*-------------------------*//
+
+
